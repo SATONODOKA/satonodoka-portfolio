@@ -1,0 +1,134 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="800" fill="#f8f9fa"/>
+  
+  <!-- タイトル -->
+  <text x="600" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1f2937">
+    求職者情報検索・転記 RPA システム構成図
+  </text>
+  
+  <!-- システム1: Kintoneベース -->
+  <rect x="50" y="100" width="200" height="120" rx="8" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  <text x="150" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+    システム1
+  </text>
+  <text x="150" y="155" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">
+    (Kintoneベース)
+  </text>
+  <text x="150" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    求職者検索
+  </text>
+  <text x="150" y="200" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    ID取得
+  </text>
+  
+  <!-- 矢印1 -->
+  <path d="M 250 160 L 350 160" stroke="#1f2937" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="300" y="150" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1f2937">
+    ID送信
+  </text>
+  
+  <!-- システム2: 自社オリジナルDB -->
+  <rect x="400" y="100" width="200" height="120" rx="8" fill="#10b981" stroke="#059669" stroke-width="2"/>
+  <text x="500" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+    システム2
+  </text>
+  <text x="500" y="155" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">
+    (自社DB)
+  </text>
+  <text x="500" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    詳細情報検索
+  </text>
+  <text x="500" y="200" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    履歴書DL
+  </text>
+  
+  <!-- 矢印2 -->
+  <path d="M 600 160 L 700 160" stroke="#1f2937" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="650" y="150" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1f2937">
+    ファイル取得
+  </text>
+  
+  <!-- システム3: 採用ATS -->
+  <rect x="750" y="100" width="200" height="120" rx="8" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+  <text x="850" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+    システム3
+  </text>
+  <text x="850" y="155" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">
+    (採用ATS)
+  </text>
+  <text x="850" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    情報転記
+  </text>
+  <text x="850" y="200" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    データ登録
+  </text>
+  
+  <!-- RPAエンジン -->
+  <rect x="400" y="350" width="400" height="180" rx="12" fill="#6366f1" stroke="#4f46e5" stroke-width="3"/>
+  <text x="600" y="385" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">
+    RPA エンジン
+  </text>
+  <text x="600" y="415" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">
+    Python + Playwright / Puppeteer
+  </text>
+  
+  <!-- RPA処理フロー -->
+  <rect x="450" y="440" width="300" height="70" rx="6" fill="#818cf8" stroke="#6366f1" stroke-width="2"/>
+  <text x="600" y="465" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    1. システム1で検索 → ID取得
+  </text>
+  <text x="600" y="485" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    2. システム2で詳細検索 → 履歴書DL
+  </text>
+  <text x="600" y="505" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    3. 内容解析 → システム3へ転記
+  </text>
+  
+  <!-- 矢印: システム1 → RPA -->
+  <path d="M 150 220 L 450 440" stroke="#1f2937" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  
+  <!-- 矢印: システム2 → RPA -->
+  <path d="M 500 220 L 550 440" stroke="#1f2937" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  
+  <!-- 矢印: システム3 → RPA -->
+  <path d="M 850 220 L 750 440" stroke="#1f2937" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  
+  <!-- ログ・監視 -->
+  <rect x="450" y="600" width="300" height="80" rx="8" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <text x="600" y="630" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+    ログ・監視システム
+  </text>
+  <text x="600" y="655" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    エラーログ / 実行履歴 / 安全停止機能
+  </text>
+  <text x="600" y="675" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">
+    レガシー環境（IE）対応
+  </text>
+  
+  <!-- 矢印: RPA → ログ -->
+  <path d="M 600 530 L 600 600" stroke="#1f2937" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- 矢印のマーカー定義 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#1f2937"/>
+    </marker>
+  </defs>
+  
+  <!-- 凡例 -->
+  <rect x="900" y="100" width="280" height="200" rx="8" fill="white" stroke="#d1d5db" stroke-width="2"/>
+  <text x="1040" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">
+    凡例
+  </text>
+  <rect x="920" y="150" width="20" height="20" fill="#3b82f6"/>
+  <text x="950" y="165" font-family="Arial, sans-serif" font-size="12" fill="#1f2937">既存システム</text>
+  <rect x="920" y="180" width="20" height="20" fill="#6366f1"/>
+  <text x="950" y="195" font-family="Arial, sans-serif" font-size="12" fill="#1f2937">RPAエンジン</text>
+  <rect x="920" y="210" width="20" height="20" fill="#6b7280"/>
+  <text x="950" y="225" font-family="Arial, sans-serif" font-size="12" fill="#1f2937">監視・ログ</text>
+  <line x1="920" y1="250" x2="940" y2="250" stroke="#1f2937" stroke-width="2"/>
+  <text x="950" y="255" font-family="Arial, sans-serif" font-size="12" fill="#1f2937">データフロー</text>
+  <line x1="920" y1="270" x2="940" y2="270" stroke="#1f2937" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="950" y="275" font-family="Arial, sans-serif" font-size="12" fill="#1f2937">制御フロー</text>
+</svg>

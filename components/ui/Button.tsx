@@ -8,6 +8,8 @@ interface ButtonProps {
   size?: "sm" | "md" | "lg";
   onClick?: () => void;
   className?: string;
+  target?: string;
+  rel?: string;
 }
 
 export default function Button({
@@ -17,12 +19,14 @@ export default function Button({
   size = "md",
   onClick,
   className = "",
+  target,
+  rel,
 }: ButtonProps) {
-  const baseStyles = "inline-block font-medium transition-colors rounded-lg";
+  const baseStyles = "inline-block font-semibold transition-all rounded-xl";
   
   const variantStyles = {
     primary: "bg-accent text-white hover:bg-accent/90",
-    secondary: "border-2 border-accent text-accent hover:bg-accent/5",
+    secondary: "border border-accent text-accent hover:bg-accent/10 hover:border-accent/80",
   };
 
   const sizeStyles = {
@@ -38,6 +42,14 @@ export default function Button({
     if (href.startsWith("#")) {
       return (
         <a href={href} className={classes}>
+          {children}
+        </a>
+      );
+    }
+    // 外部リンク（http:// または https:// で始まる）の場合は通常のaタグを使用
+    if (href.startsWith("http://") || href.startsWith("https://")) {
+      return (
+        <a href={href} className={classes} target={target} rel={rel}>
           {children}
         </a>
       );

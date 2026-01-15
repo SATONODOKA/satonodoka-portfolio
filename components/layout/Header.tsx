@@ -1,13 +1,11 @@
-import Link from "next/link";
-
 export default function Header() {
   return (
-    <header className="border-b border-gray-200">
+    <header className="bg-gray-50 border-b border-gray-200">
       <nav className="container-custom py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold">
+          <div className="text-xl font-bold text-gray-900 font-display">
             Portfolio
-          </Link>
+          </div>
           <div className="flex gap-6">
             <a href="#work" className="text-gray-700 hover:text-accent transition-colors">
               projects

@@ -4,6 +4,15 @@ export interface Project {
   description: string;
   period: string;
   tags: string[];
+  url?: string; // プロジェクトのURL（デモサイトなど）
+  techStack?: {
+    frontend?: string;
+    language?: string;
+    build?: string;
+    styling?: string;
+    automation?: string;
+    other?: string;
+  };
   problem: string;
   solution: string;
   impact: string;
@@ -25,7 +34,15 @@ export const projects: Project[] = [
     name: "工務店 × 職人 マッチング支援アプリ（LINE連携）",
     description: "人手不足の工務店が個別に職人を確保できるようにすること、また個人事業主の職人が仕事が途切れにくい状態を作ることを目的に開発した、工務店向けアプリケーション。",
     period: "2週間の短期プロトタイプ開発",
+    url: "https://shokuninboshu.netlify.app/",
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "LINE API"],
+    techStack: {
+      frontend: "React（TypeScript併用、react@^19）",
+      language: "TypeScript",
+      build: "Vite（@vitejs/plugin-react）",
+      styling: "Tailwind CSS + PostCSS + Autoprefixer",
+      other: "TypeScript ^5.9、@types/node / react / react-dom",
+    },
     problem: "慢性的な人手不足に加え、電話や紹介に依存した案件獲得・依頼のやり方が非効率で、工務店・職人双方にとって負担となっていた。",
     solution: "職人をLINE友だちとして登録し、案件発生時に近隣・条件に合う職人へ一斉配信。LINE上でのやり取りをそのまま業務フローに組み込む。",
     impact: "電話や個別連絡に依存しない迅速な一斉配信が可能になり、やり取りの履歴を可視化することで業務の属人化防止に寄与した。",
@@ -42,7 +59,7 @@ export const projects: Project[] = [
     },
     screens: [
       { image: "/images/project1-1.png", caption: "工務店側管理ダッシュボード" },
-      { image: "/images/project1-2.png", caption: "職人へのLINE配信プレビュー" },
+      { image: "/images/project1-line-preview.png", caption: "職人へのLINE配信プレビュー" },
     ],
     nextSteps: [
       "地図情報と連動した位置ベースのマッチング",
@@ -55,7 +72,11 @@ export const projects: Project[] = [
     name: "法人向け 求職者情報検索・転記 RPA",
     description: "複数の社内システムを横断して行われていた、求職者情報の検索・書類取得・転記業務を完全自動化するために開発した法人向けRPAツール。",
     period: "1ヶ月（要件定義〜初期導入）",
-    tags: ["Python", "Playwright", "Puppeteer", "RPA"],
+    tags: ["Python", "Playwright", "Puppeteer", "RPA", "SendKeys"],
+    techStack: {
+      automation: "Puppeteer / Playwright / SendKeys 系ツール",
+      language: "Python",
+    },
     problem: "CA・RAが複数システム間を手作業で往復しており、転記ミスや確認漏れが頻発。IE依存のレガシーシステムが混在し、例外対応も多かった。",
     solution: "PythonとPlaywright/Puppeteerを組み合わせたブラウザ自動操作。レガシー環境を想定した堅牢な分岐処理とエラーログ出力を実装。",
     impact: "手作業を前提としていた業務を完全自動化し、人的ミスの削減と処理時間の劇的な短縮によるコスト削減を実現した。",
@@ -71,8 +92,7 @@ export const projects: Project[] = [
       validate: "実際の業務環境での並行運用テストを実施。手作業との結果整合性を100%確認した段階で完全移行。",
     },
     screens: [
-      { image: "/images/project2-1.png", caption: "RPA実行ログ管理画面" },
-      { image: "/images/project2-2.png", caption: "自動転記処理のプレビュー" },
+      { image: "/images/rpa-concept.svg", caption: "RPAシステム構成図" },
     ],
     nextSteps: [
       "AI OCRを活用した非定型ドキュメントの読み取り精度向上",
@@ -85,7 +105,14 @@ export const projects: Project[] = [
     name: "求人保存・整理 Chrome拡張 + 管理サイト",
     description: "求人サイトを閲覧中に、Chrome拡張機能をワンクリックするだけで求人を保存し、自動でタグ付け・整理できる個人向けツール。",
     period: "2週間の個人開発",
-    tags: ["Chrome Extension", "JavaScript", "Netlify"],
+    url: "https://job-seiri.netlify.app/",
+    tags: ["Chrome Extension", "JavaScript", "Netlify", "HTML", "CSS"],
+    techStack: {
+      frontend: "HTML + JavaScript",
+      language: "JavaScript / HTML / Windowsバッチ（.bat）",
+      build: "Node.js、npm",
+      styling: "HTML / CSS（フレームワーク不使用）",
+    },
     problem: "複数サイトを横断して転職活動を行う際の情報管理が煩雑。気になった求人を後で探し直す手間や、手動でのコピペ作業が重かった。",
     solution: "ブラウザ上で完結する最小操作のChrome拡張機能を開発。取得した内容をWebデータベースに保存し、タグで自動整理。",
     impact: "求人収集・整理にかかる手作業を大幅に削減。自分自身の軸で求人を比較・検討しやすい環境を構築した。",
@@ -101,8 +128,7 @@ export const projects: Project[] = [
       validate: "自分の実際の転職活動で利用し、使い勝手をフィードバックしながら改善。特にタグの自動付与ロジックを調整。",
     },
     screens: [
-      { image: "/images/project3-1.png", caption: "Chrome拡張のポップアップUI" },
-      { image: "/images/project3-2.png", caption: "管理サイト側の求人一覧・検索" },
+      { image: "/images/project3-1.png", caption: "求人管理サイト（ログイン画面）" },
     ],
     nextSteps: [
       "求人の締め切り情報の自動取得・リマインド機能",

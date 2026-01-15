@@ -22,19 +22,41 @@ const steps: Step[] = [
   },
 ];
 
+const techStack = [
+  "React / Next.js",
+  "TypeScript",
+  "Python",
+  "Tailwind CSS",
+  "Playwright / Puppeteer",
+  "LINE API",
+  "Chrome Extension API",
+];
+
+const aiTools = [
+  "Claude (Anthropic)",
+  "ChatGPT (OpenAI)",
+  "GitHub Copilot",
+  "Cursor",
+  "v0.dev",
+];
+
 export default function HowIWork() {
   return (
-    <section className="section-spacing">
+    <section className="section-spacing bg-gray-50 border-b border-gray-200">
       <div className="container-custom">
-        <h2 className="mb-12 text-center">How I Work</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <h2 className="mb-12 text-center text-gray-900">How I Work</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
           {steps.map((step, index) => (
             <div key={step.title} className="text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-accent">{index + 1}</span>
+              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-extrabold text-accent font-display">{index + 1}</span>
               </div>
-              <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-              <p className="text-gray-600 mb-4">{step.description}</p>
+              <h3 className="text-xl font-bold mb-3 leading-tight text-gray-900 tracking-tight" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
+                {step.title}
+              </h3>
+              <p className="text-gray-800 mb-4 leading-loose" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
+                {step.description}
+              </p>
               <ul className="text-sm text-gray-500 space-y-1">
                 {step.details.map((detail) => (
                   <li key={detail}>• {detail}</li>
@@ -42,6 +64,33 @@ export default function HowIWork() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* 技術スタックとAIツール */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* 技術スタック */}
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <h3 className="text-lg font-bold mb-4 text-gray-900">技術スタック</h3>
+            <div className="flex flex-wrap gap-2">
+              {techStack.map((tech) => (
+                <span key={tech} className="inline-block px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* AIツール */}
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <h3 className="text-lg font-bold mb-4 text-gray-900">使えるAIツール</h3>
+            <div className="flex flex-wrap gap-2">
+              {aiTools.map((tool) => (
+                <span key={tool} className="inline-block px-3 py-1 text-sm font-medium bg-accent/10 text-accent rounded-full">
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
