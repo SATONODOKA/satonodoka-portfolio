@@ -49,7 +49,7 @@ export default function HowIWork() {
     <section className="snap-start snap-always min-h-screen flex items-center py-16 md:py-0">
       <div className="container-custom w-full">
         <div className="max-w-4xl mx-auto">
-          <h2 className="mb-10 text-center bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">How I Work</h2>
+          <h2 className="mb-6 md:mb-8 text-center bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">How I Work</h2>
 
           {/* ステップ */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">

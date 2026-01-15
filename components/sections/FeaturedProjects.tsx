@@ -9,7 +9,7 @@ export default function FeaturedProjects() {
   return (
     <section id="work" className="snap-start snap-always min-h-screen flex items-center py-16 md:py-0">
       <div className="container-custom w-full py-12 md:py-0">
-        <h2 className="mb-12 md:mb-16 text-center bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">Projects</h2>
+        <h2 className="mb-6 md:mb-8 text-center bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">Projects</h2>
         <div className="flex flex-col gap-6 max-w-3xl mx-auto">
           {projects.map((project) => (
             <Link key={project.id} href={`/work/${project.id}`}>
