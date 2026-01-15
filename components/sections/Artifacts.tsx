@@ -2,11 +2,11 @@ import Card from "@/components/ui/Card";
 
 export default function Artifacts() {
   return (
-    <section id="contact" className="section-spacing border-b border-gray-200">
-      <div className="container-custom">
-        <div className="max-w-2xl mx-auto">
+    <section id="contact" className="snap-start min-h-screen flex items-center py-16 md:py-0">
+      <div className="container-custom w-full py-12 md:py-0">
+        <div className="max-w-2xl mx-auto w-full">
           {/* 見出しと説明 */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <h2 className="mb-4 text-gray-900">Contact</h2>
             <p className="text-lg text-gray-700">
               ご質問・ご依頼などお気軽にどうぞ

@@ -42,10 +42,10 @@ const aiTools = [
 
 export default function HowIWork() {
   return (
-    <section className="section-spacing bg-gray-50 border-b border-gray-200">
-      <div className="container-custom">
+    <section className="snap-start min-h-screen flex items-center bg-gray-50 border-b border-gray-200 py-16 md:py-0">
+      <div className="container-custom w-full py-12 md:py-0">
         <h2 className="mb-12 text-center text-gray-900">How I Work</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {steps.map((step, index) => (
             <div key={step.title} className="text-center">
               <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -67,7 +67,7 @@ export default function HowIWork() {
         </div>
 
         {/* 技術スタックとAIツール */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* 技術スタック */}
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h3 className="text-lg font-bold mb-4 text-gray-900">技術スタック</h3>

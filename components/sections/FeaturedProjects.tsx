@@ -7,10 +7,10 @@ import { projects } from "@/lib/data";
 
 export default function FeaturedProjects() {
   return (
-      <section id="work" className="section-spacing bg-gray-100">
-      <div className="container-custom">
-        <h2 className="mb-12 text-center text-gray-900">Projects</h2>
-        <div className="flex flex-col gap-10 max-w-3xl mx-auto">
+      <section id="work" className="snap-start min-h-screen flex items-center bg-gray-100 py-16 md:py-0">
+      <div className="container-custom w-full py-12 md:py-0">
+        <h2 className="mb-16 md:mb-20 text-center text-gray-900 text-4xl md:text-5xl">Projects</h2>
+        <div className="flex flex-col gap-8 max-w-3xl mx-auto">
           {projects.map((project) => (
             <Link key={project.id} href={`/work/${project.id}`}>
               <Card>
