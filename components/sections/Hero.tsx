@@ -2,7 +2,9 @@ import GlowBackground from "@/components/ui/GlowBackground";
 
 export default function Hero() {
   return (
-    <section className="snap-start snap-always min-h-screen flex items-center pt-[72px] py-12 md:py-0 relative">
+    <section 
+      className="snap-section min-h-screen flex items-center pt-[72px] py-12 md:py-0 relative"
+    >
       {/* Heroセクションだけ強く表示するためのGlowBackground */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <GlowBackground intensity="hero" />

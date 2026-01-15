@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getProject } from "@/lib/data";
+import { getProject, projects } from "@/lib/data";
 import Link from "next/link";
 import ScrollToTop from "@/components/ScrollToTop";
 
@@ -7,6 +7,19 @@ interface CaseStudyPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+// 静的生成用のパラメータを生成
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    slug: project.id,
+  }));
+}
+
+// YouTube URLから動画IDを抽出する関数
+function getYouTubeVideoId(url: string): string | null {
+  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
+  return match ? match[1] : null;
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
@@ -19,6 +32,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
   // RPA（id=2）のみscreensを表示
   const showScreens = project.id === "2" && project.screens && project.screens.length > 0;
+  
+  // YouTube動画IDを取得
+  const youtubeVideoId = project.youtubeUrl ? getYouTubeVideoId(project.youtubeUrl) : null;
 
   return (
     <main>
@@ -33,23 +49,59 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         </div>
       </div>
       {/* Hero */}
-      <section className="snap-start snap-always min-h-screen flex items-center border-b border-gray-200 py-12 md:py-0">
+      <section 
+        className="snap-section min-h-screen flex items-center border-b border-gray-200 py-12 md:py-0"
+      >
         <div className="container-custom w-full max-w-5xl pt-[120px]">
-          <h1 className="mb-4">
-            {project.name}
-          </h1>
-          <p className="text-slate-700 mb-6">
-            {project.description}
-          </p>
-          <div className="flex items-center gap-4 text-sm text-slate-600">
-            <span>制作期間: {project.period}</span>
-            <span>役割: 企画・設計・開発</span>
+          <div className="space-y-8">
+            {/* プロジェクト情報 */}
+            <div className="space-y-4">
+              <h1 className="text-3xl md:text-4xl mb-4">
+                {project.name}
+              </h1>
+              <p className="text-slate-700 text-base md:text-lg leading-relaxed">
+                {project.description}
+              </p>
+              <div className="flex items-center gap-4 text-sm md:text-base text-slate-600">
+                <span>制作期間: {project.period}</span>
+                <span>役割: 企画・設計・開発</span>
+              </div>
+            </div>
+            
+            {/* YouTube動画埋め込み */}
+            {youtubeVideoId && (
+              <div className="mt-10">
+                <div className="max-w-4xl mx-auto">
+                  <div 
+                    className="aspect-video w-full overflow-hidden"
+                    style={{
+                      border: '1px solid rgba(255,255,255,0.5)',
+                      background: 'transparent',
+                      boxShadow: '0 0 10px rgba(96,165,250,0.35)',
+                    }}
+                  >
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${youtubeVideoId}`}
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="w-full h-full"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* プロジェクト概要 */}
-      <section className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
+      <section 
+        className="snap-section min-h-screen flex items-center py-20 md:py-28"
+      >
         <div className="container-custom w-full max-w-5xl">
           <h2 className="mb-8">プロジェクト概要</h2>
           {/* 3項目を枠線付きブロックに */}
@@ -98,7 +150,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       </section>
 
       {/* Context */}
-      <section className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
+      <section 
+        className="snap-section min-h-screen flex items-center py-20 md:py-28"
+      >
         <div className="container-custom w-full max-w-5xl">
           <h2 className="mb-6">Context</h2>
           <div className="space-y-8">
@@ -155,7 +209,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       </section>
 
       {/* Process */}
-      <section className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
+      <section 
+        className="snap-section min-h-screen flex items-center py-20 md:py-28"
+      >
         <div className="container-custom w-full max-w-5xl">
           <h2 className="mb-8">Process</h2>
           <div className="space-y-8">
@@ -228,7 +284,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
       {/* Screens - RPAのみ表示 */}
       {showScreens && (
-        <section className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
+        <section 
+        className="snap-section min-h-screen flex items-center py-20 md:py-28"
+      >
           <div className="container-custom w-full max-w-5xl">
             <h2 className="mb-8">Screens</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -5,8 +5,11 @@ import { projects } from "@/lib/data";
 
 export default function FeaturedProjects() {
   return (
-    <section id="work" className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
-      <div className="container-custom w-full">
+    <section 
+      id="work" 
+      className="snap-section min-h-screen flex items-start py-20 md:py-28"
+    >
+      <div className="container-custom w-full pt-12 md:pt-16">
         <h2 className="mb-8 md:mb-12 text-center">Projects</h2>
         <div className="flex flex-col space-y-10 max-w-5xl mx-auto">
           {projects.map((project) => (

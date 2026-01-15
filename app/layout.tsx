@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 import GlowBackground from "@/components/ui/GlowBackground";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "satonodoka portfolio",
   description: "ポートフォリオサイト",
 };
 

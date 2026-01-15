@@ -5,6 +5,7 @@ export interface Project {
   period: string;
   tags: string[];
   url?: string; // プロジェクトのURL（デモサイトなど）
+  youtubeUrl?: string; // YouTube動画URL
   techStack?: {
     frontend?: string;
     language?: string;
@@ -35,6 +36,7 @@ export const projects: Project[] = [
     description: "人手不足の工務店が個別に職人を確保できるようにすること、また個人事業主の職人が仕事が途切れにくい状態を作ることを目的に開発した、工務店向けアプリケーション。",
     period: "2週間の短期開発",
     url: "https://shokuninboshu.netlify.app/",
+    youtubeUrl: "https://www.youtube.com/watch?v=55lFaikmN4E",
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "LINE API"],
     techStack: {
       frontend: "React（TypeScript併用、react@^19）",
@@ -106,6 +108,7 @@ export const projects: Project[] = [
     description: "求人サイトを閲覧中に、Chrome拡張機能をワンクリックするだけで求人を保存し、自動でタグ付け・整理できる個人向けツール。",
     period: "2週間の個人開発",
     url: "https://job-seiri.netlify.app/",
+    youtubeUrl: "https://www.youtube.com/watch?v=3uZO8XWNqzM",
     tags: ["Chrome Extension", "JavaScript", "Netlify", "HTML", "CSS"],
     techStack: {
       frontend: "HTML + JavaScript",

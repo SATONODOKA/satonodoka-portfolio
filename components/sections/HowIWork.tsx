@@ -46,7 +46,9 @@ const aiTools = [
 
 export default function HowIWork() {
   return (
-    <section className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
+    <section 
+      className="snap-section min-h-screen flex items-center py-20 md:py-28"
+    >
       <div className="container-custom w-full">
         <div className="max-w-5xl mx-auto">
           <h2 className="mb-8 md:mb-12 text-center">How I Work</h2>
@@ -54,24 +56,24 @@ export default function HowIWork() {
           {/* ステップ：3カラムは維持、枠線付きブロック、コネクタ線で接続 */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 relative">
             {steps.map((step, index) => (
-              <div key={step.title} className="relative">
+              <div key={step.title} className="relative flex flex-col">
                 {/* 工程ブロック：主役レベル */}
                 <div 
-                  className="border p-6"
+                  className="border p-6 flex flex-col h-full"
                   style={{
                     borderColor: 'rgba(255,255,255,0.85)',
                     background: 'transparent',
                     boxShadow: '0 0 12px rgba(96,165,250,0.5)',
                   }}
                 >
-                  {/* 数字：インジケータとして控えめに */}
+                  {/* 数字：インジケータとして控えめに、視認性を上げる */}
                   <div 
                   className="mb-4"
                   style={{
                     fontSize: '11px',
                     letterSpacing: '0.2em',
-                    opacity: 0.4,
-                    color: 'rgb(148, 163, 184)',
+                    opacity: 0.7,
+                    color: 'rgb(100, 116, 139)',
                   }}
                 >
                   {step.number.padStart(2, '0')}
@@ -83,7 +85,7 @@ export default function HowIWork() {
                   <p className="text-slate-700 mb-3">
                     {step.description}
                   </p>
-                  <ul className="text-sm text-slate-600 space-y-1">
+                  <ul className="text-sm text-slate-600 space-y-1 flex-grow">
                     {step.details.map((detail) => (
                       <li key={detail}>{detail}</li>
                     ))}

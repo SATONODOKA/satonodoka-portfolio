@@ -1,6 +1,9 @@
 export default function Artifacts() {
   return (
-    <section id="contact" className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
+    <section 
+      id="contact" 
+      className="snap-section min-h-screen flex items-center py-20 md:py-28"
+    >
       <div className="container-custom w-full">
         <div className="max-w-5xl mx-auto w-full">
           {/* 見出しと説明 */}

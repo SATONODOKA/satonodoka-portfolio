@@ -10,7 +10,7 @@ export default function GlowBackground({ intensity = "default" }: GlowBackground
   // 修正前の濃さに戻す（全て同じ設定）
   const glow1 = { size: 900, blur: 150, opacity: 0.25, top: '-20%', right: '-15%', animation: 'float1 80s ease-in-out infinite' };
   const glow2 = { size: 800, blur: 140, opacity: 0.22, bottom: '-15%', left: '-20%', animation: 'float2 90s ease-in-out infinite' };
-  const glow3 = { size: 700, blur: 130, opacity: 0.20, top: '30%', right: '0%', animation: 'float3 70s ease-in-out infinite' };
+  const glow3 = { size: 700, blur: 130, opacity: 0.20, top: '30%', right: '0%', left: undefined, animation: 'float3 70s ease-in-out infinite' };
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
@@ -50,7 +50,6 @@ export default function GlowBackground({ intensity = "default" }: GlowBackground
           opacity: glow3.opacity,
           top: glow3.top,
           right: glow3.right,
-          left: glow3.left,
           animation: glow3.animation,
         }}
       />
