@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/layout/Header";
+import GlowBackground from "@/components/ui/GlowBackground";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
       </head>
       <body>
+        <GlowBackground />
         <Header />
         {children}
       </body>

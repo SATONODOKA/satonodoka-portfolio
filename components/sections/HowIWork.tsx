@@ -1,4 +1,5 @@
 interface Step {
+  number: string;
   title: string;
   description: string;
   details: string[];
@@ -6,18 +7,21 @@ interface Step {
 
 const steps: Step[] = [
   {
+    number: "1",
     title: "要件定義",
     description: "ヒアリングを通じて欲しいものを言語化",
     details: ["インタビュー", "サービスイメージの提供"],
   },
   {
-    title: "Build",
+    number: "2",
+    title: "開発",
     description: "最小実装で価値を提供する",
     details: ["PoCの最速での提供", "フィードバックを最速で反映"],
   },
   {
-    title: "Iterate",
-    description: "改善を継続的に行う",
+    number: "3",
+    title: "改善",
+    description: "継続的な改善を行う",
     details: ["データベースの整備", "運用に向けた修正"],
   },
 ];
@@ -42,53 +46,55 @@ const aiTools = [
 
 export default function HowIWork() {
   return (
-    <section className="snap-start min-h-screen flex items-center bg-gray-50 border-b border-gray-200 py-16 md:py-0">
-      <div className="container-custom w-full py-12 md:py-0">
-        <h2 className="mb-12 text-center text-gray-900">How I Work</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {steps.map((step, index) => (
-            <div key={step.title} className="text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-extrabold text-accent font-display">{index + 1}</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 leading-tight text-gray-900 tracking-tight" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
-                {step.title}
-              </h3>
-              <p className="text-gray-800 mb-4 leading-loose" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
-                {step.description}
-              </p>
-              <ul className="text-sm text-gray-500 space-y-1">
-                {step.details.map((detail) => (
-                  <li key={detail}>• {detail}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+    <section className="snap-start snap-always min-h-screen flex items-center py-16 md:py-0">
+      <div className="container-custom w-full">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="mb-10 text-center bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">How I Work</h2>
 
-        {/* 技術スタックとAIツール */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {/* 技術スタック */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 className="text-lg font-bold mb-4 text-gray-900">技術スタック</h3>
-            <div className="flex flex-wrap gap-2">
-              {techStack.map((tech) => (
-                <span key={tech} className="inline-block px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full">
-                  {tech}
-                </span>
-              ))}
-            </div>
+          {/* ステップ */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {steps.map((step) => (
+              <div key={step.title} className="border border-gray-400 rounded-lg p-6 text-center">
+                <div className="w-10 h-10 border border-gray-400 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <span className="text-lg font-bold text-gray-900">{step.number}</span>
+                </div>
+                <h3 className="text-base font-bold mb-2 text-gray-900">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 text-sm mb-3">
+                  {step.description}
+                </p>
+                <ul className="text-xs text-gray-500 space-y-1">
+                  {step.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
-          {/* AIツール */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 className="text-lg font-bold mb-4 text-gray-900">使えるAIツール</h3>
-            <div className="flex flex-wrap gap-2">
-              {aiTools.map((tool) => (
-                <span key={tool} className="inline-block px-3 py-1 text-sm font-medium bg-accent/10 text-accent rounded-full">
-                  {tool}
-                </span>
-              ))}
+          {/* 技術スタックとAIツール */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="border border-gray-400 rounded-lg p-6">
+              <h3 className="text-sm font-bold mb-4 text-gray-900">技術スタック</h3>
+              <div className="flex flex-wrap gap-2">
+                {techStack.map((tech) => (
+                  <span key={tech} className="inline-block px-3 py-1 text-xs font-medium text-gray-900 border border-gray-400 rounded">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="border border-gray-400 rounded-lg p-6">
+              <h3 className="text-sm font-bold mb-4 text-gray-900">AIツール</h3>
+              <div className="flex flex-wrap gap-2">
+                {aiTools.map((tool) => (
+                  <span key={tool} className="inline-block px-3 py-1 text-xs font-medium text-gray-900 border border-gray-400 rounded">
+                    {tool}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>

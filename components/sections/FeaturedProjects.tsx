@@ -7,10 +7,10 @@ import { projects } from "@/lib/data";
 
 export default function FeaturedProjects() {
   return (
-      <section id="work" className="snap-start min-h-screen flex items-center bg-gray-100 py-16 md:py-0">
+    <section id="work" className="snap-start snap-always min-h-screen flex items-center py-16 md:py-0">
       <div className="container-custom w-full py-12 md:py-0">
-        <h2 className="mb-16 md:mb-20 text-center text-gray-900 text-4xl md:text-5xl">Projects</h2>
-        <div className="flex flex-col gap-8 max-w-3xl mx-auto">
+        <h2 className="mb-12 md:mb-16 text-center bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">Projects</h2>
+        <div className="flex flex-col gap-6 max-w-3xl mx-auto">
           {projects.map((project) => (
             <Link key={project.id} href={`/work/${project.id}`}>
               <Card>
@@ -20,34 +20,34 @@ export default function FeaturedProjects() {
                       <ProjectImage
                         src="/images/project1-thumbnail.png"
                         alt={project.name}
-                        className="rounded-xl aspect-video mb-4 object-cover w-full"
+                        className="rounded-lg aspect-video object-cover w-full"
                       />
                     )}
                     {project.id === "2" && (
-                      <img 
-                        src="/images/rpa-concept.svg" 
+                      <img
+                        src="/images/rpa-concept.svg"
                         alt={project.name}
-                        className="rounded-xl aspect-video mb-4 object-cover w-full bg-white p-4"
+                        className="rounded-lg aspect-video object-cover w-full p-4 border border-gray-400"
                       />
                     )}
                     {project.id === "3" && (
                       <ProjectImage
                         src="/images/project3-thumbnail.png"
                         alt={project.name}
-                        className="rounded-xl aspect-video mb-4 object-cover w-full"
+                        className="rounded-lg aspect-video object-cover w-full"
                       />
                     )}
                     {!["1", "2", "3"].includes(project.id) && (
-                      <div className="bg-gray-200 rounded-xl aspect-video mb-4 flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">サムネイル</span>
+                      <div className="border border-gray-400 rounded-lg aspect-video flex items-center justify-center">
+                        <span className="text-gray-400 text-sm">No Image</span>
                       </div>
                     )}
                   </div>
                   <div className="md:w-2/3 flex flex-col">
-                    <h3 className="text-xl font-bold mb-2 leading-tight text-gray-900 tracking-tight">
+                    <h3 className="text-lg font-bold mb-2 text-gray-900">
                       {project.name}
                     </h3>
-                    <p className="text-gray-800 mb-4 leading-loose flex-grow">
+                    <p className="text-gray-600 text-sm mb-4 flex-grow">
                       {project.description}
                     </p>
                     <div className="flex gap-2 flex-wrap">

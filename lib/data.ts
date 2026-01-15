@@ -33,7 +33,7 @@ export const projects: Project[] = [
     id: "1",
     name: "工務店 × 職人 マッチング支援アプリ（LINE連携）",
     description: "人手不足の工務店が個別に職人を確保できるようにすること、また個人事業主の職人が仕事が途切れにくい状態を作ることを目的に開発した、工務店向けアプリケーション。",
-    period: "2週間の短期プロトタイプ開発",
+    period: "2週間の短期開発",
     url: "https://shokuninboshu.netlify.app/",
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "LINE API"],
     techStack: {
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     problem: "慢性的な人手不足に加え、電話や紹介に依存した案件獲得・依頼のやり方が非効率で、工務店・職人双方にとって負担となっていた。",
     solution: "職人をLINE友だちとして登録し、案件発生時に近隣・条件に合う職人へ一斉配信。LINE上でのやり取りをそのまま業務フローに組み込む。",
     impact: "電話や個別連絡に依存しない迅速な一斉配信が可能になり、やり取りの履歴を可視化することで業務の属人化防止に寄与した。",
-    context: "起業コンテスト向けのプロトタイプとして作成。実運用を見据えたデータ設計とAPI連携まで実装した。",
+    context: "起業コンテスト向けとして作成。実運用を見据えたデータ設計とAPI連携まで実装した。",
     constraints: ["LINE Messaging APIとの正確な連携", "職人の導入ハードルを下げるためのUI設計"],
     process: {
       research: "建設業界の商習慣である電話・紹介依存の現状を分析。現場での操作性を考慮し、LINEをインターフェースに選択。",
@@ -58,8 +58,8 @@ export const projects: Project[] = [
       validate: "モックデータによるシミュレーションに加え、実際のLINEアカウントを用いたメッセージ送受信テストを実施。",
     },
     screens: [
-      { image: "/images/project1-1.png", caption: "工務店側管理ダッシュボード" },
-      { image: "/images/project1-line-preview.png", caption: "職人へのLINE配信プレビュー" },
+      { image: "/images/project1-thumbnail.png", caption: "求人一覧画面" },
+      { image: "/images/project1-1.png", caption: "完了済み案件の分析画面" },
     ],
     nextSteps: [
       "地図情報と連動した位置ベースのマッチング",
@@ -128,7 +128,7 @@ export const projects: Project[] = [
       validate: "自分の実際の転職活動で利用し、使い勝手をフィードバックしながら改善。特にタグの自動付与ロジックを調整。",
     },
     screens: [
-      { image: "/images/project3-1.png", caption: "求人管理サイト（ログイン画面）" },
+      { image: "/images/project3-1.png", caption: "保存した求人一覧" },
     ],
     nextSteps: [
       "求人の締め切り情報の自動取得・リマインド機能",
