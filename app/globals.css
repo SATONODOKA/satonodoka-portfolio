@@ -17,23 +17,27 @@
     font-family: 'Inter', system-ui, sans-serif;
   }
 
+  /* Primary: HeroのH1、HeroのCTA（最も強い） */
   h1 {
-    @apply text-5xl md:text-6xl font-extrabold leading-none text-gray-900 tracking-tight;
+    @apply text-5xl md:text-6xl font-black tracking-tight text-slate-900;
     font-family: 'Poppins', 'Inter', system-ui, sans-serif;
   }
 
+  /* Secondary: 各ページのH1/H2、セクションタイトル（中） */
   h2 {
-    @apply text-3xl md:text-4xl font-bold text-gray-900 tracking-tight;
+    @apply text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900;
     font-family: 'Poppins', 'Inter', system-ui, sans-serif;
   }
 
+  /* 小見出し */
   h3 {
-    @apply text-lg md:text-xl font-semibold text-gray-900 tracking-tight;
+    @apply text-lg md:text-xl font-bold text-slate-900;
     font-family: 'Poppins', 'Inter', system-ui, sans-serif;
   }
 
+  /* 本文 */
   p {
-    @apply leading-snug text-gray-900;
+    @apply text-base md:text-lg leading-relaxed text-slate-700;
   }
 }
 

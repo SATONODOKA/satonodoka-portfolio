@@ -46,51 +46,102 @@ const aiTools = [
 
 export default function HowIWork() {
   return (
-    <section className="snap-start snap-always min-h-screen flex items-center py-16 md:py-0">
+    <section className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
       <div className="container-custom w-full">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="mb-6 md:mb-8 text-center bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">How I Work</h2>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="mb-8 md:mb-12 text-center">How I Work</h2>
 
-          {/* ステップ */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            {steps.map((step) => (
-              <div key={step.title} className="border border-gray-400 rounded-lg p-6 text-center">
-                <div className="w-10 h-10 border border-gray-400 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-lg font-bold text-gray-900">{step.number}</span>
+          {/* ステップ：3カラムは維持、枠線付きブロック、コネクタ線で接続 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 relative">
+            {steps.map((step, index) => (
+              <div key={step.title} className="relative">
+                {/* 工程ブロック：主役レベル */}
+                <div 
+                  className="border p-6"
+                  style={{
+                    borderColor: 'rgba(255,255,255,0.85)',
+                    background: 'transparent',
+                    boxShadow: '0 0 12px rgba(96,165,250,0.5)',
+                  }}
+                >
+                  {/* 数字：インジケータとして控えめに */}
+                  <div 
+                  className="mb-4"
+                  style={{
+                    fontSize: '11px',
+                    letterSpacing: '0.2em',
+                    opacity: 0.4,
+                    color: 'rgb(148, 163, 184)',
+                  }}
+                >
+                  {step.number.padStart(2, '0')}
                 </div>
-                <h3 className="text-base font-bold mb-2 text-gray-900">
-                  {step.title}
-                </h3>
-                <p className="text-gray-600 text-sm mb-3">
-                  {step.description}
-                </p>
-                <ul className="text-xs text-gray-500 space-y-1">
-                  {step.details.map((detail) => (
-                    <li key={detail}>{detail}</li>
-                  ))}
-                </ul>
+                  {/* 主役は見出し */}
+                  <h3 className="text-lg font-bold mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-slate-700 mb-3">
+                    {step.description}
+                  </p>
+                  <ul className="text-sm text-slate-600 space-y-1">
+                    {step.details.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+                {/* コネクタ線：ブロック間を結ぶ（横並び時のみ） */}
+                {index < steps.length - 1 && (
+                  <div 
+                    className="hidden md:block absolute top-1/2 -right-4 w-8 h-px"
+                    style={{
+                      background: 'rgba(255,255,255,0.75)',
+                      boxShadow: '0 0 10px rgba(96,165,250,0.5)',
+                      transform: 'translateY(-50%)',
+                    }}
+                  />
+                )}
               </div>
             ))}
           </div>
 
-          {/* 技術スタックとAIツール */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="border border-gray-400 rounded-lg p-6">
-              <h3 className="text-sm font-bold mb-4 text-gray-900">技術スタック</h3>
-              <div className="flex flex-wrap gap-2">
+          {/* 技術スタックとAIツール：サブ構造として弱く、リスト的 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div>
+              <h3 className="text-lg font-bold mb-4">技術スタック</h3>
+              <div className="flex flex-wrap gap-1.5">
                 {techStack.map((tech) => (
-                  <span key={tech} className="inline-block px-3 py-1 text-xs font-medium text-gray-900 border border-gray-400 rounded">
+                  <span
+                    key={tech}
+                    className="text-xs px-2.5 py-1.5"
+                    style={{
+                      border: '1px solid rgba(255,255,255,0.5)',
+                      background: 'transparent',
+                      fontSize: '12px',
+                      color: 'rgb(51, 65, 85)',
+                      lineHeight: '1.5',
+                    }}
+                  >
                     {tech}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="border border-gray-400 rounded-lg p-6">
-              <h3 className="text-sm font-bold mb-4 text-gray-900">AIツール</h3>
-              <div className="flex flex-wrap gap-2">
+            <div>
+              <h3 className="text-lg font-bold mb-4">AIツール</h3>
+              <div className="flex flex-wrap gap-1.5">
                 {aiTools.map((tool) => (
-                  <span key={tool} className="inline-block px-3 py-1 text-xs font-medium text-gray-900 border border-gray-400 rounded">
+                  <span
+                    key={tool}
+                    className="text-xs px-2.5 py-1.5"
+                    style={{
+                      border: '1px solid rgba(255,255,255,0.5)',
+                      background: 'transparent',
+                      fontSize: '12px',
+                      color: 'rgb(51, 65, 85)',
+                      lineHeight: '1.5',
+                    }}
+                  >
                     {tool}
                   </span>
                 ))}

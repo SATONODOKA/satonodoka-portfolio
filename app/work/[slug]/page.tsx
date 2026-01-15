@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { getProject } from "@/lib/data";
-import Card from "@/components/ui/Card";
 import Link from "next/link";
 import ScrollToTop from "@/components/ScrollToTop";
 
@@ -35,14 +34,14 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       </div>
       {/* Hero */}
       <section className="snap-start snap-always min-h-screen flex items-center border-b border-gray-200 py-12 md:py-0">
-        <div className="container-custom w-full pt-[120px]">
-          <h1 className="mb-4 text-3xl md:text-4xl font-bold text-gray-900">
+        <div className="container-custom w-full max-w-5xl pt-[120px]">
+          <h1 className="mb-4">
             {project.name}
           </h1>
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-slate-700 mb-6">
             {project.description}
           </p>
-          <div className="flex items-center gap-4 text-sm text-gray-500">
+          <div className="flex items-center gap-4 text-sm text-slate-600">
             <span>制作期間: {project.period}</span>
             <span>役割: 企画・設計・開発</span>
           </div>
@@ -50,117 +49,176 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       </section>
 
       {/* プロジェクト概要 */}
-      <section className="snap-start snap-always min-h-screen flex items-center py-16 md:py-0">
-        <div className="container-custom w-full">
-          <h2 className="mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">プロジェクト概要</h2>
+      <section className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
+        <div className="container-custom w-full max-w-5xl">
+          <h2 className="mb-8">プロジェクト概要</h2>
+          {/* 3項目を枠線付きブロックに */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
-              <h3 className="text-base font-semibold mb-3 text-gray-900">Problem</h3>
-              <p className="text-gray-600 text-sm">
+            <div 
+              className="border p-6"
+              style={{
+                borderColor: 'rgba(255,255,255,0.85)',
+                background: 'transparent',
+                boxShadow: '0 0 12px rgba(96,165,250,0.5)',
+              }}
+            >
+              <h3 className="text-lg font-bold mb-3">Problem</h3>
+              <p className="text-slate-700">
                 {project.problem}
               </p>
-            </Card>
-            <Card>
-              <h3 className="text-base font-semibold mb-3 text-gray-900">Solution</h3>
-              <p className="text-gray-600 text-sm">
+            </div>
+            <div 
+              className="border p-6"
+              style={{
+                borderColor: 'rgba(255,255,255,0.85)',
+                background: 'transparent',
+                boxShadow: '0 0 12px rgba(96,165,250,0.5)',
+              }}
+            >
+              <h3 className="text-lg font-bold mb-3">Solution</h3>
+              <p className="text-slate-700">
                 {project.solution}
               </p>
-            </Card>
-            <Card>
-              <h3 className="text-base font-semibold mb-3 text-gray-900">Impact</h3>
-              <p className="text-gray-600 text-sm">
+            </div>
+            <div 
+              className="border p-6"
+              style={{
+                borderColor: 'rgba(255,255,255,0.85)',
+                background: 'transparent',
+                boxShadow: '0 0 12px rgba(96,165,250,0.5)',
+              }}
+            >
+              <h3 className="text-lg font-bold mb-3">Impact</h3>
+              <p className="text-slate-700">
                 {project.impact}
               </p>
-            </Card>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Context */}
-      <section className="snap-start snap-always min-h-screen flex items-center py-16 md:py-0">
-        <div className="container-custom w-full">
-          <h2 className="mb-6 bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">Context</h2>
-          <div className="border border-gray-400 rounded-lg p-6 mb-8">
-            <p className="text-gray-600 text-sm">
-              {project.context}
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="border border-gray-400 rounded-lg p-6">
-              <h3 className="text-base font-semibold mb-4 text-gray-900">制約条件</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                {project.constraints.map((constraint, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <span className="text-gray-400">—</span>
-                    <span>{constraint}</span>
-                  </li>
-                ))}
-              </ul>
+      <section className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
+        <div className="container-custom w-full max-w-5xl">
+          <h2 className="mb-6">Context</h2>
+          <div className="space-y-8">
+            {/* Context説明：枠線付きブロック */}
+            <div 
+              className="border p-6"
+              style={{
+                borderColor: 'rgba(255,255,255,0.85)',
+                background: 'transparent',
+                boxShadow: '0 0 12px rgba(96,165,250,0.5)',
+              }}
+            >
+              <p className="text-slate-700">
+                {project.context}
+              </p>
             </div>
-            {project.techStack && (
-              <div className="border border-gray-400 rounded-lg p-6">
-                <h3 className="text-base font-semibold mb-4 text-gray-900">技術スタック</h3>
-                <div className="space-y-2 text-sm text-gray-600">
-                  {project.techStack.frontend && (
-                    <p><span className="font-medium text-gray-900">フロントエンド：</span>{project.techStack.frontend}</p>
-                  )}
-                  {project.techStack.language && (
-                    <p><span className="font-medium text-gray-900">言語：</span>{project.techStack.language}</p>
-                  )}
-                  {project.techStack.build && (
-                    <p><span className="font-medium text-gray-900">ビルド／開発：</span>{project.techStack.build}</p>
-                  )}
-                  {project.techStack.styling && (
-                    <p><span className="font-medium text-gray-900">スタイリング：</span>{project.techStack.styling}</p>
-                  )}
-                  {project.techStack.automation && (
-                    <p><span className="font-medium text-gray-900">自動化：</span>{project.techStack.automation}</p>
-                  )}
-                  {project.techStack.other && (
-                    <p><span className="font-medium text-gray-900">その他：</span>{project.techStack.other}</p>
-                  )}
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-bold mb-4">制約条件</h3>
+                <ul className="list-disc pl-5 space-y-2 text-slate-700">
+                  {project.constraints.map((constraint, index) => (
+                    <li key={index}>{constraint}</li>
+                  ))}
+                </ul>
               </div>
-            )}
+              {project.techStack && (
+                <div>
+                  <h3 className="text-lg font-bold mb-4">技術スタック</h3>
+                  <div className="space-y-2 text-slate-700">
+                    {project.techStack.frontend && (
+                      <p><span className="font-medium text-slate-900">フロントエンド：</span>{project.techStack.frontend}</p>
+                    )}
+                    {project.techStack.language && (
+                      <p><span className="font-medium text-slate-900">言語：</span>{project.techStack.language}</p>
+                    )}
+                    {project.techStack.build && (
+                      <p><span className="font-medium text-slate-900">ビルド／開発：</span>{project.techStack.build}</p>
+                    )}
+                    {project.techStack.styling && (
+                      <p><span className="font-medium text-slate-900">スタイリング：</span>{project.techStack.styling}</p>
+                    )}
+                    {project.techStack.automation && (
+                      <p><span className="font-medium text-slate-900">自動化：</span>{project.techStack.automation}</p>
+                    )}
+                    {project.techStack.other && (
+                      <p><span className="font-medium text-slate-900">その他：</span>{project.techStack.other}</p>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Process */}
-      <section className="snap-start snap-always min-h-screen flex items-center py-16 md:py-0">
-        <div className="container-custom w-full">
-          <h2 className="mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">Process</h2>
+      <section className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
+        <div className="container-custom w-full max-w-5xl">
+          <h2 className="mb-8">Process</h2>
           <div className="space-y-8">
-            <div className="border border-gray-400 rounded-lg p-6">
-              <h3 className="text-base font-semibold mb-3 text-gray-900">Research</h3>
-              <p className="text-gray-600 text-sm">
+            {/* Process各項目：枠線付きブロック */}
+            <div 
+              className="border p-6"
+              style={{
+                borderColor: 'rgba(255,255,255,0.85)',
+                background: 'transparent',
+                boxShadow: '0 0 12px rgba(96,165,250,0.5)',
+              }}
+            >
+              <h3 className="text-lg font-bold mb-3">Research</h3>
+              <p className="text-slate-700">
                 {project.process.research}
               </p>
             </div>
             <div>
-              <h3 className="text-base font-semibold mb-4 text-gray-900">Options</h3>
-              <div className="space-y-3">
+              <h3 className="text-lg font-bold mb-4">Options</h3>
+              <div className="space-y-4">
                 {project.process.options.map((option, index) => (
-                  <div key={index} className="border border-gray-400 rounded-lg p-4">
-                    <h4 className="font-medium text-sm text-gray-900 mb-1">
+                  <div 
+                    key={index}
+                    className="border p-4"
+                    style={{
+                      borderColor: 'rgba(255,255,255,0.75)',
+                      background: 'transparent',
+                      boxShadow: '0 0 10px rgba(96,165,250,0.45)',
+                    }}
+                  >
+                    <h4 className="font-bold text-slate-900 mb-1">
                       {option.option}
                     </h4>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-slate-700">
                       {option.reason}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="border border-gray-400 rounded-lg p-6">
-              <h3 className="text-base font-semibold mb-3 text-gray-900">Build</h3>
-              <p className="text-gray-600 text-sm">
+            <div 
+              className="border p-6"
+              style={{
+                borderColor: 'rgba(255,255,255,0.85)',
+                background: 'transparent',
+                boxShadow: '0 0 12px rgba(96,165,250,0.5)',
+              }}
+            >
+              <h3 className="text-lg font-bold mb-3">Build</h3>
+              <p className="text-slate-700">
                 {project.process.build}
               </p>
             </div>
-            <div className="border border-gray-400 rounded-lg p-6">
-              <h3 className="text-base font-semibold mb-3 text-gray-900">Validate</h3>
-              <p className="text-gray-600 text-sm">
+            <div 
+              className="border p-6"
+              style={{
+                borderColor: 'rgba(255,255,255,0.85)',
+                background: 'transparent',
+                boxShadow: '0 0 12px rgba(96,165,250,0.5)',
+              }}
+            >
+              <h3 className="text-lg font-bold mb-3">Validate</h3>
+              <p className="text-slate-700">
                 {project.process.validate}
               </p>
             </div>
@@ -170,18 +228,32 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
       {/* Screens - RPAのみ表示 */}
       {showScreens && (
-        <section className="snap-start snap-always min-h-screen flex items-center py-16 md:py-0">
-          <div className="container-custom w-full">
-            <h2 className="mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-accent bg-clip-text text-transparent">Screens</h2>
+        <section className="snap-start snap-always min-h-screen flex items-center py-20 md:py-28">
+          <div className="container-custom w-full max-w-5xl">
+            <h2 className="mb-8">Screens</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {project.screens.map((screen, index) => (
                 <div key={index}>
                   {screen.image.endsWith('.svg') ? (
-                    <div className="border border-gray-400 rounded-lg p-4 mb-3 flex items-center justify-center">
+                    <div 
+                      className="p-4 mb-3 flex items-center justify-center"
+                      style={{
+                        border: '1px solid rgba(255,255,255,0.5)',
+                        background: 'transparent',
+                        boxShadow: '0 0 10px rgba(96,165,250,0.35)',
+                      }}
+                    >
                       <img src={screen.image} alt={screen.caption} className="w-full h-auto" />
                     </div>
                   ) : (
-                    <div className="border border-gray-400 rounded-lg aspect-video mb-3 flex items-center justify-center overflow-hidden">
+                    <div 
+                      className="aspect-video mb-3 flex items-center justify-center overflow-hidden"
+                      style={{
+                        border: '1px solid rgba(255,255,255,0.5)',
+                        background: 'transparent',
+                        boxShadow: '0 0 10px rgba(96,165,250,0.35)',
+                      }}
+                    >
                       <img
                         src={screen.image}
                         alt={screen.caption}
@@ -189,7 +261,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                       />
                     </div>
                   )}
-                  <p className="text-sm text-gray-600 text-center">{screen.caption}</p>
+                  <p className="text-sm text-slate-600 text-center">{screen.caption}</p>
                 </div>
               ))}
             </div>
